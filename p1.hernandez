@@ -5,6 +5,7 @@ float sunx= 430;
 float suny=100;
 float xNugget=125;
 float yNugget=300;
+int score = 1;
 
 ///SET UP: Define screen size, set modes 
 void setup() {
@@ -16,7 +17,7 @@ void draw() {
   background(100, 200, 200 );
   sun();
   scene();
-  Chee();
+  chee();
   nugget();
   message();
   moveChee();
@@ -73,6 +74,7 @@ void moveChee() {
   if (dist(xChee, yChee, xNugget, yNugget) < 50) {
     xNugget = random(0, 400);
     yNugget = random(0, 400);
+    score = score + 1;
   }
 }
 
@@ -92,14 +94,14 @@ void moveChee() {
  xChee=  xChee + dxChee ;
  yChee=  yChee + dyChee ;
  }*/
-void Chee () {
+void chee () {
   // Starting position of creature. 
   //// ZOOG: draw a creature at (x,y) 
 
   fill(255 ); // white body of the creature 
   rect( xChee, yChee, 50, 80 ); // Body (x,y,width,height) 
-
-  ellipse( xChee+10, yChee -20, 40, 40); // Head 
+fill(100,150,60);
+  arc( xChee+10, yChee -20, 40, 40, PI, TWO_PI); // Head 
   fill(255, 0, 0); // red eyes 
   noStroke(); 
 
@@ -166,4 +168,6 @@ void message() {
   fill(255); 
   text( "Project 1: Chee chasing gold.", 15, 15 ); 
   text( "Kelly Hernandez, CST 112", 15, height-15 );
+  fill(0);
+  text (score, width/2, 250);
 } 
