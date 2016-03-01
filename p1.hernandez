@@ -1,11 +1,12 @@
+// Kelly hernandez
 ///Draw creature and add motion to the design
 float xChee=70, yChee=350, dxChee=2, dyChee=3;
 float horizon;
 float sunx= 430;
 float suny=100;
-float xNugget=125;
+float xNugget=125; 
 float yNugget=300;
-int score = 1;
+int score = 7;
 
 ///SET UP: Define screen size, set modes 
 void setup() {
@@ -71,10 +72,10 @@ void moveChee() {
   yChee = yChee + (yNugget-yChee)/ 50;
 
   //IF THE DISTANCE BETWEEN CHEE + GOLD IS < 50 THEN GOLD RESETS
-  if (dist(xChee, yChee, xNugget, yNugget) < 50) {
-    xNugget = random(0, 400);
+  if (dist(xChee, yChee, xNugget, yNugget) < 50) {  // both objects move in a patterslow no crazy
+    xNugget = random(0, 400);      //sets no specific coodinates,  
     yNugget = random(0, 400);
-    score = score + 1;
+    score = score + 7;          //each touch is one point
   }
 }
 
@@ -100,7 +101,7 @@ void chee () {
 
   fill(255 ); // white body of the creature 
   rect( xChee, yChee, 50, 80 ); // Body (x,y,width,height) 
-fill(100,150,60);
+  fill(100, 150, 60);
   arc( xChee+10, yChee -20, 40, 40, PI, TWO_PI); // Head 
   fill(255, 0, 0); // red eyes 
   noStroke(); 
@@ -114,8 +115,8 @@ fill(100,150,60);
   fill(0); 
   ellipse(x+15, y-25, 5, 5); //pupil
   ellipse(x+35, y-25, 5, 5); //pupils 
-  line(225, 275, 225, 280); //nose 
-  line(215, 380, 215, 420); //legs left->right 
+
+  line(x+90, x+80, x+90, x+120); //legs left->right 
   line(235, 380, 235, 420);
   fill(155, 50, 200);
   text ("Chee", xChee+10, yChee+40);
@@ -160,8 +161,12 @@ void sun() {
 void mousePressed() {
 
   if (mousePressed)         // by pressing he mouse he nu moves there and Chee follows it
-    xNugget = mouseX;      // ove the x axis
+    xNugget = mouseX;      // over the x axis
   yNugget = mouseY;     /// over the y axis
+}
+void keyPressed() {
+  if (key == 'k') 
+    exit();   
 }
 void message() {
   // MESSAGES: title & author  
