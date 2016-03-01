@@ -62,7 +62,7 @@ void scene() {
   rect(389, 228, 15, 40);
 }
 
-//// Move
+//// Move creature
 void moveChee() {
   //MOVE TOWARD GOLD
   xChee = xChee + (xNugget-xChee) / 50;
@@ -97,10 +97,11 @@ void Chee () {
 
   fill(255 ); // white body of the creature 
   rect( xChee, yChee, 50, 80 ); // Body (x,y,width,height) 
+  
   ellipse( xChee+10, yChee -20, 40, 40); // Head 
   fill(255, 0, 0); // red eyes 
   noStroke(); 
-
+  
   float x, y;
   x= xChee;
   y= yChee;
@@ -113,6 +114,8 @@ void Chee () {
   line(225, 275, 225, 280); //nose 
   line(215, 380, 215, 420); //legs left->right 
   line(235, 380, 235, 420);
+  fill(155,50,200);
+  text ("Chee", xChee+10, yChee+40);
 }
 
 
@@ -151,6 +154,12 @@ void sun() {
  text("Jume",355,390);      /// Jume monster naem
  }
  */
+ void mousePressed() {
+
+  if (mousePressed)         // by pressing he mouse he nu moves there and Chee follows it
+    xNugget = mouseX;      // ove the x axis
+  yNugget = mouseY;     /// over the y axis
+ }
 void message() {
   // MESSAGES: title & author  
   fill(255); 
