@@ -1,6 +1,6 @@
 // Kelly hernandez
 ///Draw creature and add motion to the design
-float xChee=70, yChee=350, dxChee=2, dyChee=3;
+float xChee=70, yChee=350, dxChee=1, dyChee=1;
 float horizon;
 float sunx= 430;
 float suny=100;
@@ -8,7 +8,7 @@ float xNugget=125;
 float yNugget=300;
 int score = 7;
 float cloud=100;
-
+float sunH= 100;
 ///SET UP: Define screen size, set modes 
 void setup() {
   size( 500, 500);
@@ -70,8 +70,8 @@ void scene() {
 //// Move creature
 void moveChee() {
   //MOVE TOWARD GOLD
-  xChee = xChee + (xNugget-xChee) / 50;
-  yChee = yChee + (yNugget-yChee)/ 50;
+  xChee = xChee + (xNugget-xChee) / 30;
+  yChee = yChee + (yNugget-yChee)/ 30;
 
   //IF THE DISTANCE BETWEEN CHEE + GOLD IS < 50 THEN GOLD RESETS
   if (dist(xChee, yChee, xNugget, yNugget) < 50) {  // both objects move in a patterslow no crazy
@@ -136,17 +136,19 @@ void nugget() {
 }
 
 void sun() {
-  //the sun
+  //the sun shape
   fill(255, 200, 0);
   ellipseMode(CORNER);
   ellipse(sunx, suny, 60, 60);    //sun position
-
+  //sun motion
+  suny = sunH + (130 * cos ((sunx+400)/ (width/PI)));     //sun arches though sky to horizon
   if (sunx > width) {   //makes the sun move though the x axis
-    sunx=0;
-    suny= random(10, 50); // moves he sun slighly up and down
+    sunx=-10;
+    suny= random(210, 240); // moves he sun slighly up and down
   }  
   sunx= sunx +.5;
 }
+  
 void cloud() {
   noStroke(); // white
   fill(255);
