@@ -7,6 +7,7 @@ float suny=100;
 float xNugget=125; 
 float yNugget=300;
 int score = 7;
+float cloud=100;
 
 ///SET UP: Define screen size, set modes 
 void setup() {
@@ -17,6 +18,7 @@ void setup() {
 void draw() {
   background(100, 200, 200 );
   sun();
+  cloud();
   scene();
   chee();
   nugget();
@@ -74,7 +76,7 @@ void moveChee() {
   //IF THE DISTANCE BETWEEN CHEE + GOLD IS < 50 THEN GOLD RESETS
   if (dist(xChee, yChee, xNugget, yNugget) < 50) {  // both objects move in a patterslow no crazy
     xNugget = random(0, 400);      //sets no specific coodinates,  
-    yNugget = random(0, 400);
+    yNugget = random(height/2, 400);    //allows chee and gold to not go over horizon
     score = score + 7;          //each touch is one point
   }
 }
@@ -95,7 +97,7 @@ void moveChee() {
  xChee=  xChee + dxChee ;
  yChee=  yChee + dyChee ;
  }*/
-void chee () {
+void chee () {    ///move creature
   // Starting position of creature. 
   //// ZOOG: draw a creature at (x,y) 
 
@@ -143,7 +145,20 @@ void sun() {
     sunx=0;
     suny= random(10, 50); // moves he sun slighly up and down
   }  
-  sunx= sunx +1;
+  sunx= sunx +.5;
+}
+void cloud() {
+  noStroke(); // white
+  fill(255);
+  ellipse(cloud,100,40,40);  //cloud moves right
+  ellipse(cloud+15,120,40,40);
+  ellipse(cloud-10,115,40,40);
+  ellipse(cloud+35,100,40,40);
+  ellipse(cloud+45,115,40,40);
+if(cloud > width+40) {
+  cloud = 0;
+}
+  cloud= cloud + .2;
 }
 ////project 2
 /* void monster(){
