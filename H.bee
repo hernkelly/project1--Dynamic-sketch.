@@ -1,0 +1,39 @@
+//creating a bee
+
+void setup(){
+  size(700,700);
+  
+}  
+void draw(){
+background(100, 200, 200 );
+// 
+fill(0);
+  triangle(380,360,430,340,480,200); // first wing
+  fill(255,0,0);
+  triangle(505,350,505,375, 560,380);  /// tail
+  fill(#F7E948);
+  ellipse(440,360,150,110);  //bees body
+  fill(#F7E948);
+  ellipse(350,350,90,100);    //bees head
+  fill(0);
+  triangle(450,360,490,340,510,200);  /// front wing
+  fill(255);
+  ellipse(323,323,30,30);// left eye
+  fill(255,0,0);
+  ellipse(318,320,10,10);    //left pupil
+  fill(255);
+  ellipse(335,323,30,30);  /// right eye
+  fill(255,0,0);
+  ellipse(335,320,10,10);    ///right pupil
+  fill(0);
+  rect(335,273,1,30);      //left antenna
+  ellipse(337,270,8,8);      //anttena ball
+  rect(355,272,1,30);      // right antenna
+  
+  ellipse(357,272,8,8);  ///right antenna ball
+  ///FEET
+ line(425,415,425,440);
+line(458,415,458,440);
+arc(355,360,30,30,1/2,PI); //mouth   arc (x,y,width,width,percentage shown,180or pi)
+  
+}
