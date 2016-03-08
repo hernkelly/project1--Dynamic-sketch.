@@ -1,39 +1,39 @@
 //creating a bee
-
+float xBee=440, yBee=360;
 void setup(){
-  size(700,700);
+  size(900,600);
   
 }  
 void draw(){
 background(100, 200, 200 );
 // 
 fill(0);
-  triangle(380,360,430,340,480,200); // first wing
+  triangle(xBee-60,yBee,xBee+10,yBee-20,xBee+40,yBee-160); // first wing
   fill(255,0,0);
-  triangle(505,350,505,375, 560,380);  /// tail
+  triangle(xBee+65,yBee-10,xBee+65,yBee+15, xBee+120,yBee+20);  /// tail
   fill(#F7E948);
-  ellipse(440,360,150,110);  //bees body
+  ellipse(xBee,yBee,150,110);  //bees body
   fill(#F7E948);
-  ellipse(350,350,90,100);    //bees head
+  ellipse(xBee-90,yBee-10,90,100);    //bees head
   fill(0);
-  triangle(450,360,490,340,510,200);  /// front wing
+  triangle(xBee+10,yBee-10,xBee+50,yBee-20,xBee+70,yBee-160);  /// front wing
   fill(255);
-  ellipse(323,323,30,30);// left eye
+  ellipse(xBee-117,yBee-37,30,30);// left eye
   fill(255,0,0);
-  ellipse(318,320,10,10);    //left pupil
+  ellipse(xBee-122,yBee-40,10,10);    //left pupil
   fill(255);
-  ellipse(335,323,30,30);  /// right eye
+  ellipse(xBee-105,yBee-37,30,30);  /// right eye
   fill(255,0,0);
-  ellipse(335,320,10,10);    ///right pupil
+  ellipse(xBee-105,yBee-40,10,10);    ///right pupil
   fill(0);
-  rect(335,273,1,30);      //left antenna
-  ellipse(337,270,8,8);      //anttena ball
-  rect(355,272,1,30);      // right antenna
+  rect(xBee-105,yBee-87,xBee-439,yBee-330);      //left antenna
+  ellipse(xBee-103,yBee-90,8,8);      //anttena ball
+  rect(xBee-85,272,xBee-439,yBee-330);      // right antenna
   
-  ellipse(357,272,8,8);  ///right antenna ball
+  ellipse(xBee-83,yBee-88,8,8);  ///right antenna ball
   ///FEET
- line(425,415,425,440);
-line(458,415,458,440);
-arc(355,360,30,30,1/2,PI); //mouth   arc (x,y,width,width,percentage shown,180or pi)
+ line(xBee-15,yBee+55,xBee-15,yBee+80);
+line(xBee+18,yBee+55,xBee+18,yBee+80);
+arc(xBee-85,yBee,30,30,1/2,PI); //mouth   arc (x,y,width,width,percentage shown,180or pi)
   
 }
