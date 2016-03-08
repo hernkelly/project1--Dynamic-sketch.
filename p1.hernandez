@@ -1,18 +1,24 @@
 // Kelly hernandez
 ///Draw creature and add motion to the design
-float xChee=70, yChee=350, dxChee=2, dyChee=3;
+float xChee=70, yChee=350, dxChee=.5, dyChee=.5;
 float horizon;
 float sunx= 430;
 float suny=100;
 float xNugget=125; 
 float yNugget=300;
-int score = 7;
+int score = 8;
 float cloud=100;
-
+float sunH= 100;
+float goldR;
+float goldG;
+float goldB;
+float windR;
+float windG;
+float windB;
 ///SET UP: Define screen size, set modes 
 void setup() {
   size( 500, 500);
-  horizon=  height / 2;   //bounces off the horizon
+  horizon=  height / 3;   //bounces off the horizon
 }
 
 void draw() {
@@ -37,11 +43,15 @@ void scene() {
   rect(0, 249, 500, 250, 2);       //x,y,width,height,radius 1/2 background 
 
   // Draw a pink house, with roof. 
+  
+  windR = random(100);
+  windG = random(100);
+  windB = random(100);
   fill( 255, 50, 300 );         // pink house 
   rect( 150, 150, 200, 100 );       //body house 
   fill(200, 150, 90); 
   triangle( 150, 150, 350, 150, 245, 50 );       // Roof 
-  fill(200);
+  fill(windR,windG,windB);
   rect(160, 160, 40, 30 );          ///house windows
   rect(300, 160, 40, 30);
   rect(230, 210, 40, 40);            //house door
@@ -65,6 +75,7 @@ void scene() {
   ellipse(370, 190, 50, 40);
   fill(190, 110, 20);
   rect(389, 228, 15, 40);
+  
 }
 
 //// Move creature
@@ -74,29 +85,19 @@ void moveChee() {
   yChee = yChee + (yNugget-yChee)/ 50;
 
   //IF THE DISTANCE BETWEEN CHEE + GOLD IS < 50 THEN GOLD RESETS
-  if (dist(xChee, yChee, xNugget, yNugget) < 50) {  // both objects move in a patterslow no crazy
+  if (dist(xChee, yChee, xNugget, yNugget) < 20) {  // both objects move in a patterslow no crazy
     xNugget = random(0, 400);      //sets no specific coodinates,  
-    yNugget = random(height/2, 400);    //allows chee and gold to not go over horizon
-    score = score + 7;          //each touch is one point
+    yNugget = random(height/2, 400);      //allows chee and gold to not go over horizon
+    xChee  =230;
+    yChee= horizon;
+    
+    
+    
+    score = score + 7;                  //each touch is one point
   }
 }
 
 
-//THIS WAS YOUR CODE
-/*{
- // check boundaries
- if (xChee > width || xChee<0) {  /// moves nugget down
- dxChee= dxChee * -1;
- }
- if (yChee > height || yChee<horizon) {  /// returns nugget bounce
- dyChee= dyChee* -.5;
- } 
- 
- 
- // move the creature
- xChee=  xChee + dxChee ;
- yChee=  yChee + dyChee ;
- }*/
 void chee () {    ///move creature
   // Starting position of creature. 
   //// ZOOG: draw a creature at (x,y) 
@@ -121,32 +122,43 @@ void chee () {    ///move creature
   line(x+30, y-5, x+30, y-10); //nose 
   line(x,y+10,x-10,y+20);          ///arms left to right
   line(x+50,y+10,x+60,y+20);
-  line(x+10,y+80, x+10, y+100); //legs left->right 
-  line(x+40, y+80, x+40, y+100);
+  line(x+10,y+80, x+5, y+100); //legs left->right 
+  line(x+40, y+80, x+35, y+100);
   text ("Chee", xChee+10, yChee+40);
 }
 
 
 void nugget() {
+  //DRAW RANDOM VALUES OF COLOR for nugget
+goldR = random (255);
+goldG = random (255);
+goldB = random (255);
+
   //draw a gold nugget 
   ellipseMode(CORNER); 
-  fill( 255, 120, 0 ); 
+  fill( goldR, goldG,goldB ); 
   noStroke(); 
   ellipse(xNugget, yNugget, 40, 20); //Gold fill
+  fill(255,140,0);
+  ellipse(xNugget+5,yNugget+5,30,10);
+  
+
 }
 
 void sun() {
-  //the sun
+  //the sun shape
   fill(255, 200, 0);
   ellipseMode(CORNER);
   ellipse(sunx, suny, 60, 60);    //sun position
-
+  //sun motion
+  suny = sunH + (-50 * sin ((sunx+200) /(width/ PI )));     //sun arches though sky to horizon
   if (sunx > width) {   //makes the sun move though the x axis
-    sunx=0;
-    suny= random(10, 50); // moves he sun slighly up and down
+    sunx=-10;
+    suny= random(210, 240); // moves he sun slighly up and down
   }  
   sunx= sunx +.5;
 }
+  
 void cloud() {
   noStroke(); // white
   fill(255);
@@ -186,10 +198,14 @@ void keyPressed() {
     exit();   
 }
 void message() {
-  // MESSAGES: title & author  
+  // MESSAGES: title & aKKKuthor  
   fill(255); 
   text( "Project 1: Chee chasing gold.", 15, 15 ); 
   text( "Kelly Hernandez, CST 112", 15, height-15 );
   fill(0);
   text (score, width/2, 250);
 }
+
+
+
+    
