@@ -171,8 +171,9 @@ void keyPressed() {
 void message() {
   // MESSAGES: title & author  
   fill(255); 
-  text( "Project 1: Chee chasing gold.", 15, 15 ); 
   text( "Kelly Hernandez, CST 112", 15, height-15 );
+  textSize(20);
+  text( "Project 1: Chee chasing gold.", 50, 15 ); 
   fill(0);
   text (score, width/2, 250);
 } 
